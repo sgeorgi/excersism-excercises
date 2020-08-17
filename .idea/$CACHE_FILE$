@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="GradleLocalSettings">
+    <option name="projectSyncType">
+      <map>
+        <entry key="$USER_HOME$/Exercism/kotlin/difference-of-squares" value="PREVIEW" />
+        <entry key="$USER_HOME$/Exercism/kotlin/gigasecond" value="PREVIEW" />
+        <entry key="$USER_HOME$/Exercism/kotlin/hamming" value="PREVIEW" />
+        <entry key="$USER_HOME$/Exercism/kotlin/leap" value="PREVIEW" />
+        <entry key="$USER_HOME$/Exercism/kotlin/pangram" value="PREVIEW" />
+        <entry key="$USER_HOME$/Exercism/kotlin/raindrops" value="PREVIEW" />
+        <entry key="$USER_HOME$/Exercism/kotlin/scrabble-score" value="PREVIEW" />
+        <entry key="$USER_HOME$/Exercism/kotlin/two-fer" value="PREVIEW" />
+      </map>
+    </option>
+  </component>
+</project>
