@@ -4,7 +4,7 @@ type Grid = Square[]
 
 export class QueenAttack {
   private positions: InitialPositions;
-  private grid: Grid;
+  private grid: Grid = [];
 
   get white() {
     return this.positions.white
@@ -18,20 +18,33 @@ export class QueenAttack {
     this.positions = positions
     if (this.white[0] === this.black[0] && this.white[1] === this.black[1]) throw  'Queens cannot share the same space'
 
-    // initialize Grid
+    for (let row = 1; row < 9; row++) {
+      for (let col = 1; col < 9; col++) {
+        this.grid.push([row, col])
+      }
+    }
   }
 
   toString(): string {
-    return [
-      '_ _ _ _ _ _ _ _',
-      '_ _ _ _ _ _ _ _',
-      '_ _ _ _ W _ _ _',
-      '_ _ _ _ _ _ _ _',
-      '_ _ _ _ _ _ _ _',
-      '_ _ _ _ _ _ _ _',
-      '_ _ _ _ _ _ B _',
-      '_ _ _ _ _ _ _ _\n'
-    ].join('\n')
+    const output = []
+    for (let row = 1; row < 9; row++) {
+      let displayRow = ''
+      for (let col = 1; col < 9; col++) {
+        displayRow += '_'
+      }
+      output[row] = displayRow.trim();
+    }
+    return output.join('\n')
+    // return [
+    //   '_ _ _ _ _ _ _ _',
+    //   '_ _ _ _ _ _ _ _',
+    //   '_ _ _ _ W _ _ _',
+    //   '_ _ _ _ _ _ _ _',
+    //   '_ _ _ _ _ _ _ _',
+    //   '_ _ _ _ _ _ _ _',
+    //   '_ _ _ _ _ _ B _',
+    //   '_ _ _ _ _ _ _ _\n'
+    // ].join('\n')
   }
 
   canAttack() {
