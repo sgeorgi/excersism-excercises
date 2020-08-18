@@ -16,7 +16,7 @@ describe("Queens", () => {
     expect(() => new QueenAttack(positioning)).toThrow(expectedError)
   })
 
-  xit("toString representation", () => {
+  it("toString representation", () => {
     const positioning: { black: [number, number]; white: [number, number] } = {
       white: [2, 4],
       black: [6, 6]
