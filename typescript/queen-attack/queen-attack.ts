@@ -1,25 +1,32 @@
 type InitialPositions = { white: [number, number], black: [number, number] }
 type Square = { row: number, col: number }
-type Piece = { row: number, col: number, name: 'W' | 'B' }
 type Grid = Square[]
+
+class Piece {
+  private _row: number;
+  private _col: number;
+  private _name: string
+
+  constructor(row: number, col: number, name: 'W' | 'B') {
+    this._row = row;
+    this._col = col;
+    this._name = name;
+  }
+
+  get position(): [number, number] {
+    return [this._row, this._col]
+  }
+ }
 
 export class QueenAttack {
   private _white: Piece;
   private _black: Piece;
   private _grid: Grid = [];
 
-  get white() {
-    return [this._white.row, this._white.col]
-  }
-
-  get black() {
-    return [this._black.row, this._black.col]
-  }
-
   constructor(positions: InitialPositions) {
-    this._white = { row: positions.white[0], col: positions.white[1], name: 'W'};
-    this._black = { row: positions.black[0], col: positions.black[1], name: 'W'};
-    if (this._white.row === this._black.row && this._white.col === this._black.col) throw  'Queens cannot share the same space'
+    this._white = new Piece(positions.white[0], positions.white[1], 'W');
+    this._black = new Piece(positions.black[0], positions.black[1], 'B');
+    if (this._white.position[0] === this._black.position[0] && this._white.position[1] === this._black.position[1]) throw  'Queens cannot share the same space'
 
     for (let row = 0; row < 8; row++) {
       for (let col = 0; col < 8; col++) {
@@ -28,14 +35,22 @@ export class QueenAttack {
     }
   }
 
+  get white() {
+    return this._white.position
+  }
+
+  get black() {
+    return this._black.position
+  }
+
   toString(): string {
     const output = []
     for (let row = 0; row < 8; row++) {
       const displayRow = []
       for (let col = 0; col < 8; col++) {
-        if (this._white.row == row && this._white.col == col) {
+        if (this._white.position[0] === row && this._white.position[1] === col) {
           displayRow.push('W')
-        } else if (this._black.row == row && this._black.col == col) {
+        } else if (this._black.position[0] === row && this._black.position[1] === col) {
           displayRow.push('B')
         } else {
           displayRow.push('_')
@@ -45,16 +60,6 @@ export class QueenAttack {
       output[row] = displayRow.join(' ').trim();
     }
     return output.join('\n') + '\n'
-    // return [
-    //   '_ _ _ _ _ _ _ _',
-    //   '_ _ _ _ _ _ _ _',
-    //   '_ _ _ _ W _ _ _',
-    //   '_ _ _ _ _ _ _ _',
-    //   '_ _ _ _ _ _ _ _',
-    //   '_ _ _ _ _ _ _ _',
-    //   '_ _ _ _ _ _ B _',
-    //   '_ _ _ _ _ _ _ _\n'
-    // ].join('\n')
   }
 
   canAttack() {
