@@ -1,6 +1,7 @@
 type InitialPositions = { white: [number, number], black: [number, number] }
 type Square = { row: number, col: number }
 type Grid = Square[]
+const tuplesEqual = <T, U>(x: [T, U], y: [T, U]) => x.every((xVal, i) => xVal === y[i]);
 
 class Piece {
   private _row: number;
@@ -18,15 +19,18 @@ class Piece {
   }
  }
 
+
 export class QueenAttack {
   private _white: Piece;
   private _black: Piece;
   private _grid: Grid = [];
 
+
+
   constructor(positions: InitialPositions) {
     this._white = new Piece(positions.white[0], positions.white[1], 'W');
     this._black = new Piece(positions.black[0], positions.black[1], 'B');
-    if (this._white.position[0] === this._black.position[0] && this._white.position[1] === this._black.position[1]) throw  'Queens cannot share the same space'
+    if (tuplesEqual(this._white.position, this._black.position)) throw  'Queens cannot share the same space'
 
     for (let row = 0; row < 8; row++) {
       for (let col = 0; col < 8; col++) {
