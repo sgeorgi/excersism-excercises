@@ -14,10 +14,14 @@ class Piece {
     this._name = name;
   }
 
-  get position(): [number, number] {
-    return [this._row, this._col]
+  get row() {
+    return this._row;
   }
- }
+
+  get col() {
+    return this._col;
+  }
+}
 
 
 export class QueenAttack {
@@ -26,11 +30,10 @@ export class QueenAttack {
   private _grid: Grid = [];
 
 
-
   constructor(positions: InitialPositions) {
     this._white = new Piece(positions.white[0], positions.white[1], 'W');
     this._black = new Piece(positions.black[0], positions.black[1], 'B');
-    if (tuplesEqual(this._white.position, this._black.position)) throw  'Queens cannot share the same space'
+    if (this._white.row === this._black.row && this._white.col === this._black.col) throw  'Queens cannot share the same space'
 
     for (let row = 0; row < 8; row++) {
       for (let col = 0; col < 8; col++) {
@@ -40,11 +43,11 @@ export class QueenAttack {
   }
 
   get white() {
-    return this._white.position
+    return [this._white.row, this._white.col]
   }
 
   get black() {
-    return this._black.position
+    return [this._black.row, this._black.col]
   }
 
   toString(): string {
@@ -52,9 +55,9 @@ export class QueenAttack {
     for (let row = 0; row < 8; row++) {
       const displayRow = []
       for (let col = 0; col < 8; col++) {
-        if (this._white.position[0] === row && this._white.position[1] === col) {
+        if (this._white.row === row && this._white.col === col) {
           displayRow.push('W')
-        } else if (this._black.position[0] === row && this._black.position[1] === col) {
+        } else if (this._black.row === row && this._black.col === col) {
           displayRow.push('B')
         } else {
           displayRow.push('_')
@@ -67,6 +70,16 @@ export class QueenAttack {
   }
 
   canAttack() {
-    return false
+    if (this._black.row === this._white.row || this._black.col === this._white.col) {
+      return true
+    } else if (this.canAttackDiagonally()) {
+      return true
+    } else {
+      return false
+    }
+  }
+
+  private canAttackDiagonally() {
+    return true
   }
 }
