@@ -69,17 +69,17 @@ export class QueenAttack {
     return output.join('\n') + '\n'
   }
 
-  canAttack() {
+  canAttack(): boolean {
     if (this._black.row === this._white.row || this._black.col === this._white.col) {
       return true
-    } else if (this.canAttackDiagonally()) {
+    } else if (QueenAttack.canAttackDiagonally()) {
       return true
     } else {
       return false
     }
   }
 
-  private canAttackDiagonally() {
+  private static canAttackDiagonally(): boolean {
     return true
   }
 }
