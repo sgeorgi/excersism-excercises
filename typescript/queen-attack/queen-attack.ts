@@ -72,14 +72,10 @@ export class QueenAttack {
   canAttack(): boolean {
     if (this._black.row === this._white.row || this._black.col === this._white.col) {
       return true
-    } else if (QueenAttack.canAttackDiagonally()) {
-      return true
-    } else {
-      return false
-    }
+    } else return QueenAttack.canAttackDiagonally();
   }
 
   private static canAttackDiagonally(): boolean {
-    return true
+    return false;
   }
 }
