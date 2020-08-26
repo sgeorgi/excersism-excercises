@@ -4,10 +4,8 @@
     <modules>
       <module fileurl="file://$PROJECT_DIR$/.idea/Exercism.iml" filepath="$PROJECT_DIR$/.idea/Exercism.iml" />
       <module fileurl="file://$PROJECT_DIR$/typescript/hello-world/hello-world.iml" filepath="$PROJECT_DIR$/typescript/hello-world/hello-world.iml" />
-      <module fileurl="file://$PROJECT_DIR$/typescript/leap/leap.iml" filepath="$PROJECT_DIR$/typescript/leap/leap.iml" />
-      <module fileurl="file://$PROJECT_DIR$/typescript/queen-attack/queen-attack.iml" filepath="$PROJECT_DIR$/typescript/queen-attack/queen-attack.iml" />
       <module fileurl="file://$PROJECT_DIR$/typescript/resistor-color-duo/resistor-color-duo.iml" filepath="$PROJECT_DIR$/typescript/resistor-color-duo/resistor-color-duo.iml" />
-      <module fileurl="file://$PROJECT_DIR$/typescript/two-fer/two-fer.iml" filepath="$PROJECT_DIR$/typescript/two-fer/two-fer.iml" />
+      <module fileurl="file://$PROJECT_DIR$/typescript/rna-transcription/rna-transcription.iml" filepath="$PROJECT_DIR$/typescript/rna-transcription/rna-transcription.iml" />
     </modules>
   </component>
 </project>
