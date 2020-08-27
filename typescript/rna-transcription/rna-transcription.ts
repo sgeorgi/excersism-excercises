@@ -1,8 +1,15 @@
 export class Transcriptor {
+  private validInput: string[] = ['C', 'G', 'A', 'T'];
+
   toRna(bases: string): string {
+    this.validate(bases);
+    return Transcriptor.translate(bases).join('');
+  }
+
+  private static translate(bases: string): string[] {
     const translations = [];
-    for (let _i = 0; _i < bases.length; _i++) {
-      const char = bases[_i];
+    for (let i = 0; i < bases.length; i++) {
+      const char = bases[i];
       if (char === 'C') {
         translations.push('G');
       } else if (char === 'G') {
@@ -11,12 +18,17 @@ export class Transcriptor {
         translations.push('U');
       } else if (char === 'T') {
         translations.push('A');
-      } else {
-        return '';
       }
     }
-    return translations.join('')
+    return translations
+  }
 
+  private validate(bases: string): void {
+    for (let i = 0; i < bases.length; i++) {
+      if (!this.validInput.includes(bases[i])) {
+        throw 'Invalid input DNA.';
+      }
+    }
   }
 }
 
